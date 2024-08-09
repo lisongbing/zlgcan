@@ -25,7 +25,8 @@ void CANReceive::run()
     int rcount = ZCAN_Receive(handle, data, 100, 10);
     for (int i = 0; i < rcount; ++i)
     {
-        qDebug()  << "id:" + QString::number(data[i].frame.can_id);
+        QString result = QString::asprintf("%x",((data[i].frame.can_id) & 0x1FFFFFFF));
+        qDebug()  << result;
         QByteArray byteArray;
         for (int j = 0;j < 8;j++)
         {
@@ -34,6 +35,7 @@ void CANReceive::run()
 
         qDebug()  << "id:" + byteArray.toHex();
     }
+
     count -= rcount;
     }
     //106

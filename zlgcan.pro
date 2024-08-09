@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     canreceive.cpp \
+    cansend.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     canframe.h \
     canreceive.h \
+    cansend.h \
     config.h \
     mainwindow.h \
     typedef.h \
