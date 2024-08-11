@@ -88,7 +88,7 @@ void MainWindow::on_openbtn_clicked()
     //属性表
     //若为 CANFD 设备, 设置冲裁域波特率的 key 为 canfd_abit_baud_rate，数据域波特率为
     //canfd_dbit_baud_rate，请注意区分 CAN 和 CANFD 设备设置波特率的区别。
-    if (ZCAN_SetValue (this->canHandle , "0/baud_rate", "250000") != STATUS_OK)
+    if (ZCAN_SetValue (this->canHandle , "0/baud_rate", "1000000") != STATUS_OK)
     {
         qDebug()  << "设置波特率失败";
 
@@ -161,88 +161,190 @@ void MainWindow::on_pushButton_2_clicked()
 {
     qDebug() << "点击,上升";
     canSender cSender;
-    uint8_t data[2] = {0x10,0x11};
-    cSender.Send(this->canHandle,0x111,data,2);
+    uint8_t data[8] = {0xF1,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //下降
 void MainWindow::on_pushButton_3_clicked()
 {
     qDebug() << "点击,下降";
+    canSender cSender;
+    uint8_t data[8] = {0xF1,0x02,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 
 //举升停止
 void MainWindow::on_pushButton_4_clicked()
 {
     qDebug() << "点击,举升停止";
+    canSender cSender;
+    uint8_t data[8] = {0xF1,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 
 //方位 左
 void MainWindow::on_pushButton_5_clicked()
 {
     qDebug() << "点击,方位 左";
+    canSender cSender;
+    uint8_t data[8] = {0xF2,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //方位 右
 void MainWindow::on_pushButton_6_clicked()
 {
     qDebug() << "点击,方位 右";
+    canSender cSender;
+    uint8_t data[8] = {0xF2,0x02,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 // 方位停止
 void MainWindow::on_pushButton_7_clicked()
 {
     qDebug() << "点击,方位停止";
+    canSender cSender;
+    uint8_t data[8] = {0xF2,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
+
+//方位 使能
+void MainWindow::on_pushButton_21_clicked()
+{
+    qDebug() << "点击,方位使能";
+    canSender cSender;
+    uint8_t data[8] = {0xF2,0x03,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
+}
+
+//方位 禁能
+void MainWindow::on_pushButton_22_clicked()
+{
+    qDebug() << "点击,方位禁能";
+    canSender cSender;
+    uint8_t data[8] = {0xF2,0x04,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
+}
+
 //俯仰 上
 void MainWindow::on_pushButton_8_clicked()
 {
     qDebug() << "点击,俯仰 上";
+    canSender cSender;
+    uint8_t data[8] = {0xF3,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //俯仰 下
 void MainWindow::on_pushButton_9_clicked()
 {
     qDebug() << "点击,俯仰 下";
+    canSender cSender;
+    uint8_t data[8] = {0xF3,0x02,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //俯仰 停止
 void MainWindow::on_pushButton_10_clicked()
 {
     qDebug() << "点击,俯仰 停止";
+    canSender cSender;
+    uint8_t data[8] = {0xF3,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
+
+//俯仰 使能
+void MainWindow::on_pushButton_23_clicked()
+{
+    qDebug() << "点击,俯仰使能";
+    canSender cSender;
+    uint8_t data[8] = {0xF3,0x03,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
+}
+//俯仰 禁能
+void MainWindow::on_pushButton_24_clicked()
+{
+    qDebug() << "点击,俯仰禁能";
+    canSender cSender;
+    uint8_t data[8] = {0xF3,0x04,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
+}
+
 //伸缩 伸出
 void MainWindow::on_pushButton_11_clicked()
 {
     qDebug() << "点击,伸缩 伸出";
+    canSender cSender;
+    uint8_t data[8] = {0xF4,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //伸缩 缩
 void MainWindow::on_pushButton_12_clicked()
 {
     qDebug() << "点击,伸缩 缩";
+    canSender cSender;
+    uint8_t data[8] = {0xF4,0x02,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //伸缩 停
 void MainWindow::on_pushButton_13_clicked()
 {
     qDebug() << "点击,伸缩 停";
+    canSender cSender;
+    uint8_t data[8] = {0xF4,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //夹住
 void MainWindow::on_pushButton_14_clicked()
 {
      qDebug() << "点击,夹住";
+     canSender cSender;
+     uint8_t data[8] = {0xF5,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+     cSender.Send(this->canHandle,0x111,data,8);
 }
 //松开
 void MainWindow::on_pushButton_15_clicked()
 {
     qDebug() << "点击,松开";
+    canSender cSender;
+    uint8_t data[8] = {0xF5,0x02,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //抓手 停止
 void MainWindow::on_pushButton_16_clicked()
 {
     qDebug() << "点击,抓手 停止";
+    canSender cSender;
+    uint8_t data[8] = {0xF5,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //开始 激震
 void MainWindow::on_pushButton_17_clicked()
 {
     qDebug() << "点击,开始 激震";
+    canSender cSender;
+    uint8_t data[8] = {0xF7,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }
 //停止 激震
 void MainWindow::on_pushButton_18_clicked()
 {
     qDebug() << "点击,停止 激震";
+    canSender cSender;
+    uint8_t data[8] = {0xF7,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
+}
+
+//48V上电
+void MainWindow::on_pushButton_19_clicked()
+{
+    qDebug() << "点击,上电";
+    canSender cSender;
+    uint8_t data[8] = {0xF8,0x01,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
+}
+//48V 下电
+void MainWindow::on_pushButton_20_clicked()
+{
+    qDebug() << "点击,下电";
+    canSender cSender;
+    uint8_t data[8] = {0xF8,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    cSender.Send(this->canHandle,0x111,data,8);
 }

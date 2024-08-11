@@ -28,7 +28,7 @@ void CANReceive::run()
         QString result = QString::asprintf("%x",((data[i].frame.can_id) & 0x1FFFFFFF));
         qDebug()  << result;
         QByteArray byteArray;
-        for (int j = 0;j < 8;j++)
+        for (int j = 0;j < data[i].frame.can_dlc;j++)
         {
             byteArray.append(data[i].frame.data[j]);
         }
