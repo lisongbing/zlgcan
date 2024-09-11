@@ -135,7 +135,7 @@
 					<desc></desc>
 				</meta>
 			</get_card_parent_instance_id>
-			<get_card_hardware_id flag="0x0066" >
+			<get_card_hardware_id flag="0x0066">
 				<value></value>
 				<meta>
 					<type>string</type>
